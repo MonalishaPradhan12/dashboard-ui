@@ -1,66 +1,97 @@
+import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap-icons/font/bootstrap-icons.css";
+import "./globals.css";
+import { Navbar } from "@/components/Navbar";
 import Image from "next/image";
-import styles from "./page.module.css";
+import { CustomCard } from "@/components/CustomCard";
+import { SalesOverviewChart } from "@/components/SalesOverviewChart";
+import { IMAGES } from "@/utils/images";
+import ArgonImageCard from "@/components/ArgonImageCard/ArgonImageCard";
 
-export default function Home() {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+    <div className="container-fluid">
+      <Navbar />
+
+      <div className="mt-4">
+        <div className="row g-4">
+          <div className="col-xl-3 col-md-6 col-sm-12">
+            <CustomCard
+              title={"Today's Money"}
+              amount={"$53,000"}
+              percentage={"+55%"}
+              description={"since yesterday"}
+              iconClass={"bi bi-backpack4"}
             />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+          </div>
+
+          <div className="col-xl-3 col-md-6 col-sm-12">
+            <CustomCard
+              title={"Today's Money"}
+              amount={"$53,000"}
+              percentage={"+55%"}
+              description={"since yesterday"}
+              iconClass={"bi bi-award-fill"}
+              iconBgClass="bg-warning"
+            />
+          </div>
+
+          <div className="col-xl-3 col-md-6 col-sm-12">
+            <CustomCard
+              title={"Today's Money"}
+              amount={"$53,000"}
+              percentage={"+55%"}
+              description={"since yesterday"}
+              iconClass={"bi bi-app-indicator"} iconBgClass="bg-danger"
+            />
+          </div>
+
+          <div className="col-xl-3 col-md-6 col-sm-12">
+            <CustomCard
+              title={"Today's Money"}
+              amount={"$53,000"}
+              percentage={"+55%"}
+              description={"since yesterday"}
+              iconClass={"bi bi-cart-check"}
+            />
+          </div>
         </div>
-      </main>
+      </div>
+      <div className="row mt-4 g-4">
+        {/* LEFT: SALES OVERVIEW */}
+        <div className="col-xl-7 col-md-6 col-sm-12">
+          <SalesOverviewChart />
+        </div>
+
+        {/* RIGHT: IMAGE CARD */}
+        <div className="col-xl-5 col-md-6 col-sm-12">
+          <div className="card h-100 shadow-sm border-0 overflow-hidden">
+
+            <ArgonImageCard />
+          </div>
+        </div>
+      </div>
+      <div className="row mt-4 g-4">
+        {/* LEFT: SALES OVERVIEW */}
+        <div className="col-xl-7 col-md-6 col-sm-12">
+          <SalesOverviewChart />
+        </div>
+
+        {/* RIGHT: IMAGE CARD */}
+        <div className="col-xl-5 col-md-6 col-sm-12">
+          <div className="card h-100 shadow-sm border-0 overflow-hidden">
+
+            <ArgonImageCard />
+          </div>
+        </div>
+      </div>
+
     </div>
   );
 }
